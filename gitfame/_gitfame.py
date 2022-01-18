@@ -494,10 +494,25 @@ def run(args):
     sho9_file = open(args.since + '_' + args.branch.replace('/', '_') + "_stat_git_thinq.txt", 'wt')
     # auth_stats
     data = ""
+    total_data = ""
+    output_total_data = ""
+    # print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+    # print(auth_stats)
+    # print(list(auth_stats.keys()))
+    # print(list(auth_stats.values()))
+    # print("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&")
+    # print(stats_tot)
+    # print(list(stats_tot.keys()))
+    # print(list(stats_tot.values()))
     for i in range(len(auth_stats)):
-        data += ("author = {}, loc = {}, commits = {}".format(list(auth_stats.keys())[i], list(stats_tot.values())[i],
-                                                              list(stats_tot.values())[i]) + '\n')
+        data += ("author = {}, loc = {}, commits = {}"
+                 .format(list(auth_stats.keys())[i], list(auth_stats.values())[i]['loc'], list(auth_stats.values())[i]['commits']) + '\n')
+        if i == len(auth_stats) - 1:
+            total_data = [list(stats_tot.values())[0], list(stats_tot.values())[2]]
+            output_total_data = ("total author num = {}, total loc = {}, total commits = {}"
+                                 .format(len(auth_stats), total_data[0], total_data[1]) + '\n')
     sho9_file.write(data)
+    sho9_file.write(output_total_data)
     sho9_file.close()
 
     sho9_jsonfile = open(args.since + '_' + args.branch.replace('/', '_') + "_stat_git_thinq.json", 'wt')

@@ -19,10 +19,10 @@ since_date = ['--since=2021-12-22', '--since=2021-12-02', '--since=2021-12-14', 
               '--since=2021-02-26']
 out_format = '--format=json'
 # ===test data set====
-# t_git_dir = 'c:/sho_ws/jira_creator'
-# t_branch = ['--branch=origin/event/test', '--branch=origin/event/test2']
-# t_since = ['--since=2021-03-01', '--since=2021-11-01']
-for i in range(len(check_branch)):
-    # gitfame.main(['--sort=commits', '-wt', t_branch[i], t_since[i], '-e', out_format, t_git_dir])
-    gitfame.main(['--sort=commits', '-wt', since_date[i], since_date[i], '-e', out_format, git_dir])
+t_git_dir = 'c:/sho_ws/jira_creator'
+t_branch = ['--branch=origin/event/test', '--branch=origin/event/test2']
+t_since = ['--since=2022-01-17', '--since=2022-01-17']
+for i in range(len(t_branch)):
+    gitfame.main(['--sort=commits', '-wt', t_branch[i], t_since[i], '-e', out_format, t_git_dir])
+    #gitfame.main(['--sort=commits', '-wt', since_date[i], since_date[i], '-e', out_format, git_dir])
 
