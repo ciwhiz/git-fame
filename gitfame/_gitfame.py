@@ -505,7 +505,7 @@ def run(args):
     # print(list(stats_tot.keys()))
     # print(list(stats_tot.values()))
     for i in range(len(auth_stats)):
-        data += ("author = {}, loc = {}, commits = {}"
+        data += ("{}, {}, {}"
                  .format(list(auth_stats.keys())[i], list(auth_stats.values())[i]['loc'], list(auth_stats.values())[i]['commits']) + '\n')
         if i == len(auth_stats) - 1:
             total_data = [list(stats_tot.values())[0], list(stats_tot.values())[2]]
