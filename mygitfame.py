@@ -1,11 +1,16 @@
 import gitfame
 import os
 
+# https://github.com/casperdcl/git-fame
+
 cwd = os.getcwd()
 print(cwd)
 print("--------------------- start git fame ---------------------")
 # TODO: please input your git repo path
-git_dir = 'input here!!!!'
+git_dir = 'c:/sho_ws/jira_creator'
+
+single_branch = '--branch=origin/master'
+single_since_date = '--since=2021-01-01'
 
 check_branch = ['--branch=origin/event/4.0.12xx', '--branch=origin/event/4.0.11xx', '--branch=origin/event/4.0.10xx',
                 '--branch=origin/event/3.6.13xx', '--branch=origin/event/3.6.12xx',
@@ -31,12 +36,21 @@ out_format = '--format=json'
 # ===test data set====
 t_git_dir = 'c:/sho_ws/jira_creator'
 t_branch = ['--branch=origin/event/test', '--branch=origin/event/test2']
+t_branch_single = '--branch=origin/master'
 t_since = ['--since=2022-01-17', '--since=2022-01-17']
+t_since_single = '--since=2021-12-01'
 # for i in range(len(t_branch)):
 #     gitfame.main(['--sort=commits', '-wt', t_branch[i], t_since[i], '-e', out_format, t_git_dir])
 
 # for i in range(len(check_branch)):
-#     gitfame.main(['--sort=commits', '-wt', check_branch[i], since_date[i], '-e', out_format, git_dir])
+#     gitfame.main(['--sort=commits', '--loc=surv|ins|del', '-wt', check_branch[i], since_date[i], '-e', out_format, git_dir])
 
-for i in range(len(tv_branch)):
-    gitfame.main(['--sort=commits', '-wt', tv_branch[i], tv_since_date[i], '-e', out_format, tv_repo_dir])
+# for i in range(len(tv_branch)):
+#     gitfame.main(['--sort=commits', '-wt', tv_branch[i], tv_since_date[i], '-e', out_format, tv_repo_dir])
+
+# single branch
+# gitfame.main(['--sort=loc', '-wt', single_branch, single_since_date, '--loc=ins,del,surv', '-e', out_format, git_dir])
+
+gitfame.main(['--sort=loc', '-MCt', t_branch_single, t_since_single, '--loc=ins,del', '-e', t_git_dir])
+
+
